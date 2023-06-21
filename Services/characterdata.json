@@ -1,0 +1,20 @@
+[
+    {
+      "id": 0,
+      "characterName": "Bayonetta",
+      "weight": "81",
+      "runSpeed": "1760"
+    },
+    {
+    "id": 1,
+    "characterName": "Bowser",
+    "weight": "135",
+    "runSpeed": "1971"
+    },
+    {
+        "id": 2,
+        "characterName": "Bowser Jr.",
+        "weight": "108",
+        "runSpeed": "1566"
+    }
+  ]
