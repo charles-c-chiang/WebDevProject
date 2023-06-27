@@ -5,12 +5,12 @@ const MainList = ({ users }) => {
       {users.map(
         (user) => (
           <div key={user.id} class="card">
-            <h3>${user.characterName}</h3>
-            <p>Tier: ${user.tier}</p>
-            <p>Weight: ${user.weight}</p>
-            <p>Run Speed: ${user.runSpeed}</p>
-            <p>Dash Speed: ${user.dash}</p>
-            <p>Air Speed: ${user.airSpeed}</p>
+            <h3>{user.characterName}</h3>
+            <p>Tier: {user.tier}</p>
+            <p>Weight: {user.weight}</p>
+            <p>Run Speed: {user.runSpeed}</p>
+            <p>Dash Speed: {user.dash}</p>
+            <p>Air Speed: {user.airSpeed}</p>
           </div>
         )
       )}

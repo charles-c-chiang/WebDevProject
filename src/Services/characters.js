@@ -1,6 +1,6 @@
-//import axios from 'axios';
+import axios from 'axios';
 import data from './characters.json'
-const axios = window.axios;
+//const axios = window.axios;
 const url =
   "https://my-json-server.typicode.com/kellybuchanan/WebDev-Spring2021";
 

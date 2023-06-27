@@ -4,8 +4,6 @@ import {
   } from "react";
   import { getAllUsers } from "./../../Services/characters.js";
   import MainList from "./MainList.js";
-  import readCompany from "./../../Services/Company";
-  import CompanyList from "./companyList.js";
   
   /* Import data */
   const Main = () => {
@@ -13,24 +11,22 @@ import {
     const [searchTerm, setSearchTerm] = useState("");
     const [sortBy, setSortBy] = useState("");
     const [filterByTier, setFilterByTier] = useState("");
-
-    const [company, setCompany] = useState([]);
   
-    // useEffect(() => {
-    //     getAllUsers().then((users) => {
-    //         setUsers(users);
-    //     });
-    //     }, []);
-
     useEffect(() => {
-        readCompany().then((company) => {
-            console.log('companies: ', company);
-            //console.log(company);
-            // const name = company[0].get("Name")
-
-            setCompany(company);
+        getAllUsers().then((users) => {
+            setUsers(users);
         });
         }, []);
+
+    // useEffect(() => {
+    //     readCompany().then((company) => {
+    //         console.log('companies: ', company);
+    //         //console.log(company);
+    //         // const name = company[0].get("Name")
+
+    //         setCompany(company);
+    //     });
+    //     }, []);
   
     /* Search handling for user interaction*/
     const handleSearch = (event) => {
@@ -110,7 +106,7 @@ import {
           </select>
         </div>
       
-        <CompanyList users={company} />
+        <MainList users={sortedUsers} />
       </div>
     );
   };
