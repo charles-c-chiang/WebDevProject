@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  
+  .card {
+    flex-basis: calc(33.33% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgb(177, 87, 87);
+    margin-bottom: 20px;
+  }
+  
+  .card h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+  
+  .card p {
+    margin: 0;
+    margin-top: 5px;
+    color: white;
+  }
+  
+  .poppinsFont {
+    font-family: "Poppins", sans-serif;
+  }
