@@ -12,7 +12,7 @@ export const getById = (id) => {
 // READ operation - get all lessons in Parse class Lesson
 export const getAllLessons = () => {
   console.log("finding")
-  const Character = Parse.Object.extend("customClass");
+  const Character = Parse.Object.extend("Character");
   const query = new Parse.Query(Character);
   return query.find().then((results) => {
     // returns array of Lesson objects
