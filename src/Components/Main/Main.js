@@ -48,27 +48,28 @@ import {
       return
     }
 
-    // TODO: edit filters to work within React
-    // /* Edit list by filters and search */
-    // const filteredCharacters = characters.filter((user) =>
-    //   user.characterName.toLowerCase().includes(searchTerm.toLowerCase())
-    // );
+    // /* TODO: edit filters to work within React */
+
+    /* Edit list by filters and search */
+    const filteredCharacters = characters.filter((user) =>
+      user.get("characterName").toLowerCase().includes(searchTerm.toLowerCase())
+    );
   
-    // let sortedCharacters = filteredCharacters;
+    let sortedCharacters = filteredCharacters;
   
-    // if (filterByTier) {
-    //   sortedCharacters = sortedCharacters.filter((user) => user.tier === filterByTier);
-    // }
+    if (filterByTier) {
+      sortedCharacters = sortedCharacters.filter((user) => user.get("tier") === filterByTier);
+    }
   
-    // if (sortBy === "weight-asc") {
-    //   sortedCharacters = sortedCharacters.sort(
-    //     (a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10)
-    //   );
-    // } else if (sortBy === "weight-desc") {
-    //   sortedCharacters = sortedCharacters.sort(
-    //     (a, b) => parseInt(b.weight, 10) - parseInt(a.weight, 10)
-    //   );
-    // }
+    if (sortBy === "weight-asc") {
+      sortedCharacters = sortedCharacters.sort(
+        (a, b) => parseInt(a.get("weight"), 10) - parseInt(b.get("weight"), 10)
+      );
+    } else if (sortBy === "weight-desc") {
+      sortedCharacters = sortedCharacters.sort(
+        (a, b) => parseInt(b.get("weight"), 10) - parseInt(a.get("weight"), 10)
+      );
+    }
   
     /* React */
     return (
@@ -113,7 +114,7 @@ import {
           </select>
         </div>
       
-        <MainList characters={characters} />
+        <MainList characters={sortedCharacters} />
       </div>
     );
   };
