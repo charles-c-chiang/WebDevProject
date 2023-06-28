@@ -55,26 +55,26 @@ import {
       return
     }
 
-    /* Edit list by filters and search */
-    const filteredUsers = users.filter((user) =>
-      user.characterName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // /* Edit list by filters and search */
+    // const filteredUsers = users.filter((user) =>
+    //   user.characterName.toLowerCase().includes(searchTerm.toLowerCase())
+    // );
   
-    let sortedUsers = filteredUsers;
+    // let sortedUsers = filteredUsers;
   
-    if (filterByTier) {
-      sortedUsers = sortedUsers.filter((user) => user.tier === filterByTier);
-    }
+    // if (filterByTier) {
+    //   sortedUsers = sortedUsers.filter((user) => user.tier === filterByTier);
+    // }
   
-    if (sortBy === "weight-asc") {
-      sortedUsers = sortedUsers.sort(
-        (a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10)
-      );
-    } else if (sortBy === "weight-desc") {
-      sortedUsers = sortedUsers.sort(
-        (a, b) => parseInt(b.weight, 10) - parseInt(a.weight, 10)
-      );
-    }
+    // if (sortBy === "weight-asc") {
+    //   sortedUsers = sortedUsers.sort(
+    //     (a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10)
+    //   );
+    // } else if (sortBy === "weight-desc") {
+    //   sortedUsers = sortedUsers.sort(
+    //     (a, b) => parseInt(b.weight, 10) - parseInt(a.weight, 10)
+    //   );
+    // }
   
     /* React */
     return (
