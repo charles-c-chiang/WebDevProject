@@ -1,49 +1,23 @@
-import axios from 'axios';
-import data from './characters.json'
-//const axios = window.axios;
-const url =
-  "https://my-json-server.typicode.com/kellybuchanan/WebDev-Spring2021";
+import Parse from 'parse';
 
-/* Axios to import json data */
-export const createUser = (id, characterName, weight, runSpeed, tier) => {
-  return axios({
-    method: "post",
-    url: `${url}/characters`,
-    data: {
-      id,
-      characterName,
-      weight,
-      runSpeed,
-      tier
-    },
-    headers: {
-      "Content-Type": "application/json"
-    },
-    json: true
-  })
-    .then((response) => {
-      console.log("POST response: ", response);
-    })
-    .catch((err) => {
-      console.log("POST error: ", err);
-    });
+export const getById = (id) => {
+  const Lesson = Parse.Object.extend("Lesson");
+  const query = new Parse.Query(Lesson);
+  return query.get(id).then((result) => {
+    // return Lesson object with objectId: id
+    return result;
+  });
 };
 
-export const getAllUsers = () => {
-  return (
-    axios
-      .get('./characters.json')
-      .then((response) => {
-        console.log(response.data);
-        return response.data;
-      })
-      .catch((err) => {
-        console.log("GET Error: ", err);
-      })
-  );
+// READ operation - get all lessons in Parse class Lesson
+export const getAllCharacters = () => {
+  console.log("finding")
+  const Character = Parse.Object.extend("Character");
+  const query = new Parse.Query(Character);
+  return query.find().then((results) => {
+    // returns array of Lesson objects
+    console.log("found")
+    console.log(results)
+    return results;
+  });
 };
-
-export const getAllUsers1 = () => {
-    console.log(data)
-    return data;
-}

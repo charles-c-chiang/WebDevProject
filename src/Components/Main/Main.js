@@ -2,27 +2,20 @@ import {
     useEffect,
     useState
   } from "react";
-  import { getAllUsers } from "./../../Services/characters.js";
-  import { getAllLessons } from "./../../Services/Company.js";
+  import { getAllCharacters } from "../../Services/Characters.js";
   import MainList from "./MainList.js";
   
   /* Import data */
   const Main = () => {
-    const [users, setUsers] = useState([]);
+    const [characters, setCharacters] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [sortBy, setSortBy] = useState("");
     const [filterByTier, setFilterByTier] = useState("");
-  
-    // useEffect(() => {
-    //     getAllUsers().then((users) => {
-    //         setUsers(users);
-    //     });
-    //     }, []);
 
     useEffect(() => {
-      getAllLessons().then((users) => {
-          console.log(users);
-          setUsers(users);
+      getAllCharacters().then((characters) => {
+          console.log(characters);
+          setCharacters(characters);
       });
       }, []);
 
@@ -50,28 +43,28 @@ import {
       setFilterByTier(event.target.value);
     };
 
-    if (!users) {
+    if (!characters) {
       console.log("uh OH")
       return
     }
 
     // /* Edit list by filters and search */
-    // const filteredUsers = users.filter((user) =>
+    // const filteredCharacters = characters.filter((user) =>
     //   user.characterName.toLowerCase().includes(searchTerm.toLowerCase())
     // );
   
-    // let sortedUsers = filteredUsers;
+    // let sortedCharacters = filteredCharacters;
   
     // if (filterByTier) {
-    //   sortedUsers = sortedUsers.filter((user) => user.tier === filterByTier);
+    //   sortedCharacters = sortedCharacters.filter((user) => user.tier === filterByTier);
     // }
   
     // if (sortBy === "weight-asc") {
-    //   sortedUsers = sortedUsers.sort(
+    //   sortedCharacters = sortedCharacters.sort(
     //     (a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10)
     //   );
     // } else if (sortBy === "weight-desc") {
-    //   sortedUsers = sortedUsers.sort(
+    //   sortedCharacters = sortedCharacters.sort(
     //     (a, b) => parseInt(b.weight, 10) - parseInt(a.weight, 10)
     //   );
     // }
@@ -119,7 +112,7 @@ import {
           </select>
         </div>
       
-        <MainList users={users} />
+        <MainList characters={characters} />
       </div>
     );
   };
