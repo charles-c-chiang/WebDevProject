@@ -1,0 +1,172 @@
+[
+    {
+      "characterName": "Bayonetta",
+      "weight": "81",
+      "runSpeed": "1760",
+      "tier": "D",
+      "dash": "1936",
+      "airSpeed": "1019"
+    },
+
+    {
+      "characterName": "Bowser",
+      "weight": "135",
+      "runSpeed": "1971",
+      "tier": "F",
+      "dash": "2255",
+      "airSpeed": "1155"
+    },
+    {
+      "characterName": "Bowser Jr.",
+      "weight": "108",
+      "runSpeed": "1566",
+      "tier": "G",
+      "dash": "1760",
+      "airSpeed": "1134"
+    },
+    {
+      "characterName": "Captain Falcon",
+      "weight": "104",
+      "runSpeed": "2552",
+      "tier": "E",
+      "dash": "1980",
+      "airSpeed": "1218"
+    },
+    {
+      "characterName": "Charizard",
+      "weight": "116",
+      "runSpeed": "2200",
+      "tier": "A",
+      "dash": "2288",
+      "airSpeed": "1103"
+    },
+    {
+      "characterName": "Chrom",
+      "weight": "95",
+      "runSpeed": "2145",
+      "tier": "B",
+      "dash": "2200",
+      "airSpeed": "1302"
+    },
+    {
+      "characterName": "Cloud",
+      "weight": "100",
+      "runSpeed": "2167",
+      "tier": "D",
+      "dash": "2145",
+      "airSpeed": "1155"
+    },
+    {
+      "characterName": "Corrin",
+      "weight": "98",
+      "runSpeed": "1595",
+      "tier": "D",
+      "dash": "1892",
+      "airSpeed": "1019"
+    },
+    {
+      "characterName": "Daisy",
+      "weight": "89",
+      "runSpeed": "1595",
+      "tier": "D",
+      "dash": "1826",
+      "airSpeed": "1029"
+    },
+    {
+      "characterName": "Dark Pit",
+      "weight": "96",
+      "runSpeed": "1828",
+      "tier": "E",
+      "dash": "2090",
+      "airSpeed": "935"
+    },
+    {
+      "characterName": "Dark Samus",
+      "weight": "108",
+      "runSpeed": "1654",
+      "tier": "G",
+      "dash": "1870",
+      "airSpeed": "1103"
+    },
+    {
+      "characterName": "Diddy Kong",
+      "weight": "90",
+      "runSpeed": "2006",
+      "tier": "A",
+      "dash": "2090",
+      "airSpeed": "924"
+    },
+    {
+
+      "characterName": "Donkey Kong",
+      "weight": "127",
+      "runSpeed": "1873",
+      "tier": "E",
+      "dash": "2090",
+      "airSpeed": "1208"
+    },
+    {
+      "characterName": "Dr. Mario",
+      "weight": "98",
+      "runSpeed": "1397",
+      "tier": "D",
+      "dash": "1936",
+      "airSpeed": "924"
+    },
+    {
+      "characterName": "Duck Hunt",
+      "weight": "86",
+      "runSpeed": "1793",
+      "tier": "F",
+      "dash": "1760",
+      "airSpeed": "1155"
+    },
+    {
+      "characterName": "Falco",
+      "weight": "82",
+      "runSpeed": "1619",
+      "tier": "A",
+      "dash": "2035",
+      "airSpeed": "977"
+    },
+    {
+      "characterName": "Fox",
+      "weight": "77",
+      "runSpeed": "2402",
+      "tier": "D",
+      "dash": "2090",
+      "airSpeed": "1110"
+    },
+    {
+      "characterName": "Ganondorf",
+      "weight": "118",
+      "runSpeed": "1340",
+      "tier": "F",
+      "dash": "1870",
+      "airSpeed": "830"
+    },
+    {
+      "characterName": "Greninja",
+      "weight": "88",
+      "runSpeed": "2288",
+      "tier": "D",
+      "dash": "2178",
+      "airSpeed": "1239"
+    },
+    {
+      "characterName": "Ike",
+      "weight": "107",
+      "runSpeed": "1507",
+      "tier": "C",
+      "dash": "1815",
+      "airSpeed": "1134"
+    },
+    {
+      "characterName": "Incineroar",
+      "weight": "116",
+      "runSpeed": "1180",
+      "tier": "C",
+      "dash": "1716",
+      "airSpeed": "880"
+    }
+]
