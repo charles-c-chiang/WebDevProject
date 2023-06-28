@@ -1,8 +1,8 @@
 import Parse from 'parse';
 
 export const getById = (id) => {
-  const Lesson = Parse.Object.extend("Lesson");
-  const query = new Parse.Query(Lesson);
+  const Character = Parse.Object.extend("Character");
+  const query = new Parse.Query(Character);
   return query.get(id).then((result) => {
     // return Lesson object with objectId: id
     return result;

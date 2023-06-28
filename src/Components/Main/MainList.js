@@ -6,7 +6,7 @@ const MainList = ({ characters }) => {
         <div>
           {characters.map((character) => (
             <div key={"1" + character.id} className="card">
-              <h3>{character.get("characterName")}{" "}</h3>
+              <h3>{character.get("characterName")}</h3>
               <p>Tier: {character.get("tier")}</p>
               <p>Weight: {character.get("weight")}</p>
               <p>Run Speed: {character.get("runSpeed")}</p>

@@ -48,8 +48,6 @@ import {
       return
     }
 
-    // /* TODO: edit filters to work within React */
-
     /* Edit list by filters and search */
     const filteredCharacters = characters.filter((user) =>
       user.get("characterName").toLowerCase().includes(searchTerm.toLowerCase())
