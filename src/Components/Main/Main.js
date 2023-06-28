@@ -3,6 +3,7 @@ import {
     useState
   } from "react";
   import { getAllUsers } from "./../../Services/characters.js";
+  import { getAllLessons } from "./../../Services/Company.js";
   import MainList from "./MainList.js";
   
   /* Import data */
@@ -12,11 +13,18 @@ import {
     const [sortBy, setSortBy] = useState("");
     const [filterByTier, setFilterByTier] = useState("");
   
+    // useEffect(() => {
+    //     getAllUsers().then((users) => {
+    //         setUsers(users);
+    //     });
+    //     }, []);
+
     useEffect(() => {
-        getAllUsers().then((users) => {
-            setUsers(users);
-        });
-        }, []);
+      getAllLessons().then((users) => {
+          console.log(users);
+          setUsers(users);
+      });
+      }, []);
 
     // useEffect(() => {
     //     readCompany().then((company) => {
@@ -41,7 +49,12 @@ import {
     const handleFilterByTier = (event) => {
       setFilterByTier(event.target.value);
     };
-  
+
+    if (!users) {
+      console.log("uh OH")
+      return
+    }
+
     /* Edit list by filters and search */
     const filteredUsers = users.filter((user) =>
       user.characterName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -65,21 +78,21 @@ import {
   
     /* React */
     return (
-      <div class="background poppinsFont">
+      <div className="background poppinsFont">
         <center>
           <h1>Smash Fighter Statistics</h1>
         </center>
         <input
-          class="search poppinsFont"
+          className="search poppinsFont"
           type="text"
           placeholder="Search Fighters"
           value={searchTerm}
           onInput={handleSearch}
         />
         <div>
-          <label for="filter-tier-select">Filter by Tier:</label>
+          <label htmlFor="filter-tier-select">Filter by Tier:</label>
           <select
-            class="filtermenu poppinsFont"
+            className="filtermenu poppinsFont"
             id="filter-tier-select"
             value={filterByTier}
             onChange={handleFilterByTier}
@@ -93,12 +106,12 @@ import {
             <option value="F">Tier F</option>
             <option value="G">Tier G</option>
           </select>
-          <label for="sort-select">Sort By:</label>
+          <label htmlFor="sort-select">Sort By:</label>
           <select
             id="sort-select"
             value={sortBy}
             onChange={handleSortBy}
-            class="sortmenu poppinsFont"
+            className="sortmenu poppinsFont"
           >
             <option value="">Select Weight</option>
             <option value="weight-asc">Weight (Ascending)</option>
@@ -106,7 +119,7 @@ import {
           </select>
         </div>
       
-        <MainList users={sortedUsers} />
+        <MainList users={users} />
       </div>
     );
   };
