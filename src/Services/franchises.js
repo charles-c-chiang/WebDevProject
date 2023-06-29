@@ -1,8 +1,8 @@
 import Parse from 'parse';
 
 export const getById = (id) => {
-  const Character = Parse.Object.extend("Character");
-  const query = new Parse.Query(Character);
+  const Franchise = Parse.Object.extend("Franchise");
+  const query = new Parse.Query(Franchise);
   return query.get(id).then((result) => {
     // return Lesson object with objectId: id
     return result;
@@ -10,10 +10,10 @@ export const getById = (id) => {
 };
 
 // READ operation - get all lessons in Parse class Lesson
-export const getAllCharacters = () => {
+export const getAllFranchises = () => {
   console.log("finding")
-  const Character = Parse.Object.extend("Character");
-  const query = new Parse.Query(Character);
+  const Franchise = Parse.Object.extend("Franchise");
+  const query = new Parse.Query(Franchise);
   return query.find().then((results) => {
     // returns array of Lesson objects
     console.log("found")
