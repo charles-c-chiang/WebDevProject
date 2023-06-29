@@ -1,5 +1,5 @@
-Student A: Gabriel Sheikh
-Student B: Charles Chiang
+# Student A: Gabriel Sheikh
+# Student B: Charles Chiang
 
 # Getting Started with Create React App
 
