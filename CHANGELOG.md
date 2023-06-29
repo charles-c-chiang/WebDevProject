@@ -1,1 +1,2 @@
-[0.2.0] Added routing and Parse to React App
+[0.2.0]
+Added routing and Parse to React App
