@@ -1,4 +1,6 @@
-/* Format data from json file into cards */
+import React from 'react';
+import './MainList.css';
+
 const MainList = ({ characters }) => {
   return (
     <div className="container">
@@ -13,12 +15,9 @@ const MainList = ({ characters }) => {
               <p>Dash Speed: {character.get("dash")}</p>
               <p>Air Speed: {character.get("airSpeed")}</p>
             </div>
-          )
-          )}
-        </div>
-      )
-      
-      }
+          ))}
+    </div>
+      )}
     </div>
   );
 };

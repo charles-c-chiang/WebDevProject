@@ -5,6 +5,9 @@ import {
 import { getAllCharacters } from "../../Services/Characters.js";
 import MainList from "./MainList.js";
 import "./MainList.css";
+import { useNavigate } from "react-router-dom";
+
+
 
 /* Import data */
 const Main = () => {
@@ -12,6 +15,12 @@ const Main = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [filterByTier, setFilterByTier] = useState("");
+    /* Navigation handling */
+    const history = useNavigate();
+
+    const buttonHandler = () => {
+        history("/");
+    }
 
   useEffect(() => {
     getAllCharacters().then((characters) => {
@@ -72,8 +81,8 @@ const Main = () => {
 
   /* React */
   return (
-      
       <div className="background poppinsFont main-container">
+        <button onClick={buttonHandler}>Home</button>
       <center>
         <h1>Smash Fighter Statistics</h1>
       </center>
