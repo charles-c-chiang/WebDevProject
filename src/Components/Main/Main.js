@@ -2,7 +2,7 @@ import {
   useEffect,
   useState
 } from "react";
-import { getAllCharacters } from "../../Services/Characters.js";
+import { getAllCharacters } from "../../Services/characters";
 import MainList from "./MainList.js";
 import "./MainList.css";
 import { useNavigate } from "react-router-dom";
@@ -28,16 +28,6 @@ const Main = () => {
         setCharacters(characters);
     });
     }, []);
-
-  // useEffect(() => {
-  //     readCompany().then((company) => {
-  //         console.log('companies: ', company);
-  //         //console.log(company);
-  //         // const name = company[0].get("Name")
-
-  //         setCompany(company);
-  //     });
-  //     }, []);
 
   /* Search handling for user interaction*/
   const handleSearch = (event) => {
