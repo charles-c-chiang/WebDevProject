@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
   return (
@@ -68,6 +69,11 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
           <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
             Submit
           </button>
+        </div>
+        <div>
+        <Link to="/auth">
+                <button>Back</button>
+            </Link>
         </div>
       </form>
     </div>

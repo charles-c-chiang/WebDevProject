@@ -9,7 +9,7 @@ export default function Components() {
     return (
         <Router>
             <Routes>
-                <Route path = "/" element={<Home/>} />
+                <Route path = "/home" element={<Home/>} />
                 <Route path = "/main" element={<Main/>} />
                 <Route path = "/auth" element={<AuthModule />} />
                 <Route path = "/auth/register" element={<AuthRegister />} />

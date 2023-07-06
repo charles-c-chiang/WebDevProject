@@ -19,7 +19,7 @@ const Main = () => {
     const history = useNavigate();
 
     const buttonHandler = () => {
-        history("/");
+        history("/home");
     }
 
   useEffect(() => {
