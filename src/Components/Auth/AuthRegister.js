@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { createUser } from "./AuthService";
 import AuthForm from "./AuthForm";
+import { checkUser } from "./AuthService";
+import { useNavigate } from "react-router-dom";
 
 const AuthRegister = () => {
+    const navigate = useNavigate();
   const [newUser, setNewUser] = useState({
     firstName: "",
     lastName: "",
@@ -23,10 +26,15 @@ const AuthRegister = () => {
           );
         }
         // TODO: redirect user to main app
+        if (checkUser()) {
+            alert("You have been logged in");
+            navigate("/home");
+          }
+        
         setAdd(false);
       });
     }
-  }, [newUser, add]);
+  }, [newUser, add, navigate]);
 
   const onChangeHandler = (e) => {
     e.preventDefault();
