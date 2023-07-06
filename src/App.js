@@ -8,6 +8,6 @@ Parse.serverURL = 'https://parseapi.back4app.com'; // This is your Server URL
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 
 export default function App() {
-  window.localStorage.clear()
+  // window.localStorage.clear()
   return <Components />;
 }

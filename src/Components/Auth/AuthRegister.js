@@ -18,6 +18,10 @@ const AuthRegister = () => {
 
   // useEffect that run when changes are made to the state variable flags
   useEffect(() => {
+    if (checkUser()) {
+        alert("You have been logged in");
+        navigate("/home");
+      }
     if (newUser && add) {
       createUser(newUser).then((userCreated) => {
         if (userCreated) {
