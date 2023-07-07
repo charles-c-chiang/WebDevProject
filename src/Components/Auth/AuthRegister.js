@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { createUser } from "./AuthService";
+import { createUser, checkUser } from "./AuthService";
 import AuthForm from "./AuthForm";
-import { checkUser } from "./AuthService";
 import { useNavigate } from "react-router-dom";
 
 const AuthRegister = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [newUser, setNewUser] = useState({
     firstName: "",
     lastName: "",
@@ -13,28 +12,27 @@ const AuthRegister = () => {
     password: ""
   });
 
-  // flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
 
-  // useEffect that run when changes are made to the state variable flags
+  //redirects authorized users to home page instead of /auth page
+
   useEffect(() => {
     if (checkUser()) {
-        alert("You have been logged in");
-        navigate("/home");
-      }
+      alert("You are already logged in");
+      navigate("/home");
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     if (newUser && add) {
       createUser(newUser).then((userCreated) => {
         if (userCreated) {
-          alert(
-            `${userCreated.get("firstName")}, you successfully registered!`
-          );
+          alert(`${userCreated.get("firstName")}, you successfully registered!`);
         }
-        // TODO: redirect user to main app
         if (checkUser()) {
-            alert("You have been logged in");
-            navigate("/home");
-          }
-        
+          alert("You have been logged in");
+          navigate("/home");
+        }
         setAdd(false);
       });
     }
@@ -42,19 +40,15 @@ const AuthRegister = () => {
 
   const onChangeHandler = (e) => {
     e.preventDefault();
-    console.log(e.target);
-    const { name, value: newValue } = e.target;
-    console.log(newValue);
-
-    setNewUser({
-      ...newUser,
-      [name]: newValue
-    });
+    const { name, value } = e.target;
+    setNewUser((prevUser) => ({
+      ...prevUser,
+      [name]: value
+    }));
   };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("submitted: ", e.target);
     setAdd(true);
   };
 

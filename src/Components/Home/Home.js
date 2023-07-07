@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { getAllFranchises } from "../../Services/franchises.js";
 import FranchiseList from "./FranchiseList.js";
 import { useNavigate } from "react-router-dom";
+import { checkUser } from "../Auth/AuthService";
 
 export default function Home() {
   const [franchises, setFranchises] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllFranchises().then((franchises) => {
@@ -12,13 +14,16 @@ export default function Home() {
     });
   }, []);
 
-  const history = useNavigate();
-
   const buttonHandler = () => {
-    history("/main");
+    navigate("/main");
   }
+  // redirects user to login page if not authenticated
+  useEffect(() => {
+    if (!checkUser()) {
+      navigate("/auth/login");
+    }
+  }, [navigate]);
 
-  //Home Page
   return (
     <section>
       <h1>Welcome Home</h1>

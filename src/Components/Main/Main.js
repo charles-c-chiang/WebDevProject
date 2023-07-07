@@ -1,54 +1,53 @@
-import {
-  useEffect,
-  useState
-} from "react";
+import React, { useEffect, useState } from "react";
 import { getAllCharacters } from "../../Services/characters";
 import MainList from "./MainList.js";
 import "./MainList.css";
 import { useNavigate } from "react-router-dom";
+import { checkUser } from "../Auth/AuthService";
 
-
-
-/* Import data */
 const Main = () => {
   const [characters, setCharacters] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [filterByTier, setFilterByTier] = useState("");
-    /* Navigation handling */
-    const history = useNavigate();
-
-    const buttonHandler = () => {
-        history("/home");
-    }
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllCharacters().then((characters) => {
-        console.log(characters);
-        setCharacters(characters);
+      console.log(characters);
+      setCharacters(characters);
     });
-    }, []);
+  }, []);
 
-  /* Search handling for user interaction*/
+  const buttonHandler = () => {
+    navigate("/home");
+  }
+
+  //redirects unauthorized user to login page
+
+  useEffect(() => {
+    if (!checkUser()) {
+      navigate("/auth/login");
+    }
+  }, [navigate]);
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
-  /* Sorting by weight */
+
   const handleSortBy = (event) => {
     setSortBy(event.target.value);
   };
 
-  /* Filter by tier */
   const handleFilterByTier = (event) => {
     setFilterByTier(event.target.value);
   };
 
   if (!characters) {
-    console.log("uh OH")
-    return
+    console.log("uh OH");
+    return null;
   }
 
-  /* Edit list by filters and search */
   const filteredCharacters = characters.filter((user) =>
     user.get("characterName").toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -69,10 +68,9 @@ const Main = () => {
     );
   }
 
-  /* React */
   return (
-      <div className="background poppinsFont main-container">
-        <button onClick={buttonHandler}>Home</button>
+    <div className="background poppinsFont main-container">
+      <button onClick={buttonHandler}>Home</button>
       <center>
         <h1>Smash Fighter Statistics</h1>
       </center>
@@ -112,11 +110,10 @@ const Main = () => {
           <option value="weight-desc">Weight (Descending)</option>
         </select>
       </div>
-    
+
       <MainList characters={sortedCharacters} />
     </div>
   );
 };
 
 export default Main;
-/*   <div>{company}</div> */
