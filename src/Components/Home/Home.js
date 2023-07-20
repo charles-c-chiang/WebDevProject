@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getAllFranchises } from "../../Services/franchises.js";
-import FranchiseList from "./FranchiseList.js";
-import { useNavigate } from "react-router-dom";
-import { checkUser } from "../Auth/AuthService";
+import { getAllFranchises } from '../../Services/franchises.js';
+import FranchiseList from './FranchiseList.js';
+import { useNavigate, Link } from 'react-router-dom';
+import { checkUser } from '../Auth/AuthService';
+import stashlogo from '../../Assets/stashlogo.png';
+import './Home.css'; // Import the CSS file for styling
 
 export default function Home() {
   const [franchises, setFranchises] = useState([]);
@@ -15,22 +17,58 @@ export default function Home() {
   }, []);
 
   const buttonHandler = () => {
-    navigate("/main");
-  }
-  // redirects user to login page if not authenticated
+    navigate('/main');
+  };
+
+  // Redirects user to login page if not authenticated
   useEffect(() => {
     if (!checkUser()) {
-      navigate("/auth/login");
+      navigate('/auth/login');
     }
   }, [navigate]);
 
   return (
     <section>
-      <h1>Welcome Home</h1>
-      <p>Made by Gabriel Sheikh (Student A) and Charles Chiang (Student B)</p>
-      <button onClick={buttonHandler}>Click Here to see Smash Fighter Statistics!</button>
-      <p>See these Franchises's Fighters on the Stats Page!</p>
-      <FranchiseList franchises={franchises} />
+      <nav className="navbar bg-body-tertiary">
+        <div className="container-fluid">
+          <Link to="/" className="navbar-brand">
+            <img src={stashlogo} alt="Logo" className="logo" />
+          </Link>
+        </div>
+      </nav>
+
+      <div>
+        <div>
+          <center>
+            <h1>Welcome Home</h1>
+          </center>
+        </div>
+      </div>
+      <div>
+        <div>
+          <center>
+            <p>Made by Gabriel Sheikh (Student A) and Charles Chiang (Student B)</p>
+          </center>
+          <br />
+        </div>
+      </div>
+      <div>
+        <div className="col text-center">
+          <button onClick={buttonHandler} className="btn btn-secondary">
+            Click Here to see Smash Fighter Statistics!
+          </button>
+          <br />
+          <br />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col text-center">
+          <p>See these Franchises's Fighters on the Stats Page!</p>
+        </div>
+      </div>
+      <div className="row text-white">
+        <FranchiseList franchises={franchises} />
+      </div>
     </section>
   );
 }

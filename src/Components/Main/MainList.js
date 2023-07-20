@@ -22,27 +22,27 @@ const MainList = ({ characters }) => {
 
     fetchFranchiseNames();
   }, [characters]);
-  
-//  Getting the character data and then franchise names that each character points to
-
 
   return (
     <div className="container">
-      {characters.length > 0 && (
-        <div>
-          {characters.map((character) => (
-            <div key={"1" + character.id} className="card">
-              <h3>{character.get("characterName")}</h3>
-              <p>Tier: {character.get("tier")}</p>
-              <p>Weight: {character.get("weight")}</p>
-              <p>Run Speed: {character.get("runSpeed")}</p>
-              <p>Dash Speed: {character.get("dash")}</p>
-              <p>Air Speed: {character.get("airSpeed")}</p>
-              <p>Franchise: {franchiseNames[character.id]}</p>
+      {characters.length > 0 &&
+        characters.map((character) => {
+          const franchiseName = franchiseNames[character.id];
+
+          return franchiseName ? (
+            <div key={"1" + character.id} className="col-lg-4 col-md-6 col-sm-12">
+              <div className="card">
+                <h3>{character.get("characterName")}</h3>
+                <p>Tier: {character.get("tier")}</p>
+                <p>Weight: {character.get("weight")}</p>
+                <p>Run Speed: {character.get("runSpeed")}</p>
+                <p>Dash Speed: {character.get("dash")}</p>
+                <p>Air Speed: {character.get("airSpeed")}</p>
+                <p>Franchise: {franchiseName}</p>
+              </div>
             </div>
-          ))}
-        </div>
-      )}
+          ) : null;
+        })}
     </div>
   );
 };
