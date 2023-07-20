@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllFranchises } from '../../Services/franchises.js';
 import FranchiseList from './FranchiseList.js';
 import { useNavigate, Link } from 'react-router-dom';
-import { checkUser } from '../Auth/AuthService';
+import { checkUser, logoutUser } from '../Auth/AuthService';
 import stashlogo from '../../Assets/stashlogo.png';
 import './Home.css'; // Import the CSS file for styling
 
@@ -20,6 +20,12 @@ export default function Home() {
     navigate('/main');
   };
 
+  const logoutHandler = () => {
+    logoutUser();
+    navigate("/auth");
+    alert("You have successfully logged out!");
+  }
+
   // Redirects user to login page if not authenticated
   useEffect(() => {
     if (!checkUser()) {
@@ -34,6 +40,10 @@ export default function Home() {
           <Link to="/" className="navbar-brand">
             <img src={stashlogo} alt="Logo" className="logo" />
           </Link>
+          {/* logout */}
+          <button onClick={logoutHandler} className="btn btn-secondary">
+            Logout
+          </button>
         </div>
       </nav>
 
@@ -52,6 +62,7 @@ export default function Home() {
           <br />
         </div>
       </div>
+
       <div>
         <div className="col text-center">
           <button onClick={buttonHandler} className="btn btn-secondary">

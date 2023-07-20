@@ -3,7 +3,7 @@ import { getAllCharacters } from "../../Services/characters";
 import MainList from "./MainList.js";
 import "./Main.css";
 import { useNavigate, Link } from "react-router-dom";
-import { checkUser } from "../Auth/AuthService";
+import { checkUser, logoutUser} from "../Auth/AuthService";
 import stashlogo from '../../Assets/stashlogo.png';
 
 const Main = () => {
@@ -23,6 +23,12 @@ const Main = () => {
   const buttonHandler = () => {
     navigate("/home");
   };
+
+  const logoutHandler = () => {
+    logoutUser();
+    navigate("/auth");
+    alert("You have successfully logged out!");
+  }
 
   useEffect(() => {
     if (!checkUser()) {
@@ -78,6 +84,10 @@ const Main = () => {
           </Link>
           <button onClick={buttonHandler} className="btn btn-secondary">
             Home
+          </button>
+          {/* Logout button added */}
+          <button onClick={logoutHandler} className="btn btn-secondary">
+            Logout
           </button>
         </div>
       </nav>

@@ -45,3 +45,15 @@ export const loginUser = (currUser) => {
     return Parse.User.current()?.authenticated;
   };
   
+
+  //logout
+  export const logoutUser = async () => {
+    const currentUser = Parse.User.current();
+    if (currentUser) {
+      // Logs out the current user
+      await Parse.User.logOut();
+      console.log('User logged out');
+    } else {
+      console.log('No user logged in');
+    }
+  }
