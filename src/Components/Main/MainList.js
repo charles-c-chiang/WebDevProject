@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './MainList.css';
 import { getById } from "../../Services/franchises.js";
+import { Link } from 'react-router-dom';
 
-const MainList = ({ characters }) => {
+const MainList = ({ characters, refreshList }) => {
   const [franchiseNames, setFranchiseNames] = useState({});
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const MainList = ({ characters }) => {
     };
 
     fetchFranchiseNames();
-  }, [characters]);
+  }, [characters, refreshList]);
 
   return (
     <div className="container">
@@ -29,8 +30,8 @@ const MainList = ({ characters }) => {
         characters.map((character) => {
           const franchiseName = franchiseNames[character.id];
 
-          return franchiseName ? (
-            <div key={"1" + character.id} className="col-lg-4 col-md-6 col-sm-12">
+          return (
+            <Link to={`/character/${character.id}`} key={"1" + character.id} className="col-lg-4 col-md-6 col-sm-12">
               <div className="card">
                 <h3>{character.get("characterName")}</h3>
                 <p>Tier: {character.get("tier")}</p>
@@ -40,8 +41,8 @@ const MainList = ({ characters }) => {
                 <p>Air Speed: {character.get("airSpeed")}</p>
                 <p>Franchise: {franchiseName}</p>
               </div>
-            </div>
-          ) : null;
+            </Link>
+          );
         })}
     </div>
   );
