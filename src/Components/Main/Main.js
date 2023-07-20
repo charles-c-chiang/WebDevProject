@@ -123,6 +123,7 @@ const Main = () => {
           </select>
         </div>
       </div>
+      <Link to="/character/create" className="btn btn-secondary mb-3">Add New Fighter</Link>
       <MainList characters={filteredCharacters} />
     </div>
   );
