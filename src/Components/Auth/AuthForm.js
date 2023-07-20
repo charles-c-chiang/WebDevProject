@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import stashlogo from '../../Assets/stashlogo.png';
 
 const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
   return (
     <div>
+        <div className="container-fluid text-center">
+            <img src={stashlogo} alt="Logo" className="w-25 text-center" />
+        </div>
       <form onSubmit={onSubmit} autoComplete="off">
       {/* Only shown when registering, not logging in */}
       {!isLogin ? 
@@ -72,7 +76,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
         </div>
         <div>
         <Link to="/auth">
-                <button>Back</button>
+                <button className="btn btn-primary">Back</button>
             </Link>
         </div>
       </form>
