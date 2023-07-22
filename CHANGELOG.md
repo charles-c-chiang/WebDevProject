@@ -1,3 +1,8 @@
+[0.4.1]
+Added bootstrap to Auth modules
+Added videos on Main page
+Created Logout function
+
 [0.4.0]
 Added bootstrap to Main and Home modules
 
