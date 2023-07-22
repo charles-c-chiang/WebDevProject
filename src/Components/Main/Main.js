@@ -5,6 +5,8 @@ import "./Main.css";
 import { useNavigate, Link } from "react-router-dom";
 import { checkUser, logoutUser} from "../Auth/AuthService";
 import stashlogo from '../../Assets/stashlogo.png';
+import smashvideo from '../../Assets/smashvideo1.mp4';
+import smashthumb from '../../Assets/smashthumbnail.png';
 
 const Main = () => {
   const [characters, setCharacters] = useState([]);
@@ -12,6 +14,7 @@ const Main = () => {
   const [sortBy, setSortBy] = useState("");
   const [filterByTier, setFilterByTier] = useState("");
   const navigate = useNavigate();
+  const videoLink = "55UDxqLzb1c";
 
   useEffect(() => {
     getAllCharacters().then((characters) => {
@@ -135,6 +138,23 @@ const Main = () => {
       </div>
       <Link to="/character/create" className="btn btn-secondary mb-3">Add New Fighter</Link>
       <MainList characters={filteredCharacters} />
+      <br />
+      <div class="container-fluid text-center">
+        <div class="row">
+          <div class = "col">
+            <video width="560" height="315"controls="controls" poster={`${smashthumb}`} >
+              <source src = {`${smashvideo}`} type="video/mp4"/>
+              <p>
+                Your browser doesn't support HTML video. Here is a
+                <a href="https://www.youtube.com/watch?v=6wjIC6Q0Hkw">link to the video</a> instead.
+              </p>
+            </video>
+          </div>
+          <div class = "col">
+            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoLink}`} title="YouTube video player"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

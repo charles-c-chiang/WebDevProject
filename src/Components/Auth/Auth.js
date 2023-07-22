@@ -25,10 +25,10 @@ const AuthModule = () => {
         <h1> Welcome to Stash! Register or login below.</h1>
       </div>
       <br />
-      <div class = "container-fluid">
+      <div class = "container-fluid text-center">
         <div class = "row">
-          <div class = "col-sm"></div>
-          <div class = "col-2"></div>
+          {/* spacer */}
+          <div class = "col" />
           <div class = "col">
           <Link to="/auth/register">
             <button type="button" class="btn btn-primary btn-lg" >Register</button>
@@ -40,8 +40,13 @@ const AuthModule = () => {
             <button type="button" class="btn btn-primary btn-lg">Login</button>
           </Link>
           </div>
-          <div class = "col"></div>
+          {/* spacer */}
+          <div class = "col" />
         </div>
+      </div>
+      <br />
+      <div class = "text-center" >
+        <p>Try using "testemail@1" and "password" to login.</p>
       </div>
 
     </div>
