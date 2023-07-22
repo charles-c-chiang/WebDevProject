@@ -5,7 +5,7 @@ import "./Main.css";
 import { useNavigate, Link } from "react-router-dom";
 import { checkUser, logoutUser} from "../Auth/AuthService";
 import stashlogo from '../../Assets/stashlogo.png';
-import smashvideo from '../../Assets/smashvideo1.mp4';
+import smashvideo from '../../Assets/smashvideo.mp4';
 import smashthumb from '../../Assets/smashthumbnail.png';
 
 const Main = () => {
