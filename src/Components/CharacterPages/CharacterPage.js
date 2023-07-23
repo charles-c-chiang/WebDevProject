@@ -7,6 +7,7 @@ import './CharacterPage.css';
 const CharacterPage = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
+  const [formState, setFormState] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +15,14 @@ const CharacterPage = () => {
       try {
         const result = await getById(id);
         setCharacter(result);
+        setFormState({
+          characterName: result.get('characterName'),
+          tier: result.get('tier'),
+          weight: result.get('weight'),
+          runSpeed: result.get('runSpeed'),
+          dash: result.get('dash'),
+          airSpeed: result.get('airSpeed'),
+        });
       } catch (error) {
         console.log(error);
       }
@@ -46,31 +55,38 @@ const CharacterPage = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      await update(character);
-      alert('Character updated successfully!');
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    Object.entries(formState).forEach(([key, value]) => {
+      character.set(key, value);
+    });
+
+    await update(character);
+    alert('Character updated successfully!');
+    navigate('/main');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCharacter((prevCharacter) => ({
-      ...prevCharacter,
+    setFormState(prevState => ({
+      ...prevState,
       [name]: value,
     }));
   };
+
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 character-card text-white">
         {character && (
           <div>
-            <h2>{character.get('characterName')}</h2>
+            <h2>{formState.characterName}</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label className="form-label">Character Name</label>
@@ -78,7 +94,7 @@ const CharacterPage = () => {
                   className="form-control"
                   type="text"
                   name="characterName"
-                  value={character.get('characterName')}
+                  value={formState.characterName}
                   onChange={handleChange}
                 />
               </div>
@@ -88,7 +104,7 @@ const CharacterPage = () => {
                   className="form-control"
                   type="text"
                   name="tier"
-                  value={character.get('tier')}
+                  value={formState.tier}
                   onChange={handleChange}
                 />
               </div>
@@ -98,7 +114,7 @@ const CharacterPage = () => {
                   className="form-control"
                   type="text"
                   name="weight"
-                  value={character.get('weight')}
+                  value={formState.weight}
                   onChange={handleChange}
                 />
               </div>
@@ -108,7 +124,7 @@ const CharacterPage = () => {
                   className="form-control"
                   type="text"
                   name="runSpeed"
-                  value={character.get('runSpeed')}
+                  value={formState.runSpeed}
                   onChange={handleChange}
                 />
               </div>
@@ -118,7 +134,7 @@ const CharacterPage = () => {
                   className="form-control"
                   type="text"
                   name="dash"
-                  value={character.get('dash')}
+                  value={formState.dash}
                   onChange={handleChange}
                 />
               </div>
@@ -128,7 +144,7 @@ const CharacterPage = () => {
                   className="form-control"
                   type="text"
                   name="airSpeed"
-                  value={character.get('airSpeed')}
+                  value={formState.airSpeed}
                   onChange={handleChange}
                 />
               </div>

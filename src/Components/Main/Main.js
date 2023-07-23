@@ -81,17 +81,19 @@ const Main = () => {
   return (
     <div className="background poppinsFont main-container">
       <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid">
+        <div className="container-fluid d-flex">
           <Link to="/" className="navbar-brand">
             <img src={stashlogo} alt="Logo" className="logo" />
           </Link>
-          <button onClick={buttonHandler} className="btn btn-secondary">
-            Home
-          </button>
-          {/* Logout button added */}
-          <button onClick={logoutHandler} className="btn btn-secondary">
-            Logout
-          </button>
+          <div className="ms-auto">
+            <button onClick={buttonHandler} className="btn btn-secondary me-2" style={{ marginRight: '5px' }}>
+              Home
+            </button>
+            {/* Logout button added */}
+            <button onClick={logoutHandler} className="btn btn-secondary">
+              Logout
+            </button>
+          </div>
         </div>
       </nav>
 
