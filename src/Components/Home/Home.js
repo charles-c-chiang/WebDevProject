@@ -35,18 +35,24 @@ export default function Home() {
 
   return (
     <section>
+   <div className="background poppinsFont main-container">
       <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid">
+        <div className="container-fluid d-flex">
           <Link to="/" className="navbar-brand">
             <img src={stashlogo} alt="Logo" className="logo" />
           </Link>
-          {/* logout */}
-          <button onClick={logoutHandler} className="btn btn-secondary">
-            Logout
-          </button>
+          <div className="ms-auto">
+            <button onClick={buttonHandler} className="btn btn-secondary" style={{ marginRight: '5px' }}>
+              Main
+            </button>
+            {/* Logout button added */}
+            <button onClick={logoutHandler} className="btn btn-secondary">
+              Logout
+            </button>
+          </div>
         </div>
       </nav>
-
+    </div>
       <div>
         <div>
           <center>

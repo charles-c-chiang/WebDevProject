@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './MainList.css';
 import { getById } from "../../Services/franchises.js";
 import { Link } from 'react-router-dom';
+import CharacterChart from '../../Services/CharacterChart'; // Correct import statement
 
 const MainList = ({ characters, refreshList }) => {
   const [franchiseNames, setFranchiseNames] = useState({});
@@ -13,8 +14,12 @@ const MainList = ({ characters, refreshList }) => {
       for (const character of characters) {
         const franchisePointer = character.get("Franchise_Pointer");
         if (franchisePointer) {
-          const franchise = await getById(franchisePointer.id);
-          names[character.id] = franchise.get("Name");
+          try {
+            const franchise = await getById(franchisePointer.id);
+            names[character.id] = franchise.get("Name");
+          } catch (error) {
+            console.error(`No franchise found for ID ${franchisePointer.id}`);
+          }
         }
       }
 
@@ -26,6 +31,7 @@ const MainList = ({ characters, refreshList }) => {
 
   return (
     <div className="container">
+      <CharacterChart characters={characters} /> {/* Add the new component */}
       {characters.length > 0 &&
         characters.map((character) => {
           const franchiseName = franchiseNames[character.id];
